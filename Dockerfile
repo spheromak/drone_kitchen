@@ -2,18 +2,19 @@
 FROM  ubuntu
 MAINTAINER Jesse Nelson <spheromak@gmail.com>
 
-RUN sudo apt-get update
-RUN sudo apt-get install curl -y
+RUN apt-get update
+RUN apt-get install curl -y
 
 # install docker runtime
-RUN curl -s https://get.docker.io/ubuntu/ | sudo sh
+RUN curl -s https://get.docker.io/ubuntu/ | sh
 
 # ruby 2.1
-RUN sudo apt-get install python-software-properties -y
-RUN sudo apt-add-repository ppa:brightbox/ruby-ng
-RUN sudo apt-get update
-RUN sudo apt-get install ruby2.1 ruby2.1-dev  libxslt-dev libxml2-dev -y
-RUN sudo apt-get install build-essential -y
+RUN apt-get install python-software-properties -y
+RUN apt-add-repository ppa:brightbox/ruby-ng
+RUN apt-get update
+RUN apt-get install ruby2.1 ruby2.1-dev  libxslt-dev libxml2-dev -y
+RUN apt-get install build-essential -y
+RUN locale-gen en_US.UTF-8
 
 # preload gems
 ADD Gemfile /tmp/Gemfile
